@@ -1,0 +1,7 @@
+timm
+itertools
+transformers
+torch
+torchvision
+opencv-python
+tqdm

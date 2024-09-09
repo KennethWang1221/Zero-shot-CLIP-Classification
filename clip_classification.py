@@ -36,7 +36,9 @@ def main(**args):
     if not os.path.exists(res_dir):
         os.makedirs(res_dir)
     
-    results_csv_path = os.path.join(args['image_path'], "results.csv")
+    results_csv_path = os.path.join(args['data_path'], "results.csv")
+    image_path = os.path.join(args['data_path'], "flickr30k_images")
+    print('results_csv_path:',results_csv_path)
     generate_captions(results_csv_path, save_path = "captions.csv")
 
     train_df, valid_df = split_data(args['captions_path'])
@@ -47,7 +49,7 @@ def main(**args):
     valid_transform = create_transform(args['target_img_size'], transform_mode = 'validation')
 
     train_dataset = CLIPDataset(
-        args['image_path'],
+        image_path,
         train_df["image"].values,
         train_df["caption"].values,
         tokenizer=tokenizer,
@@ -56,7 +58,7 @@ def main(**args):
     )
 
     val_dataset = CLIPDataset(
-        args['image_path'],
+        image_path,
         valid_df["image"].values,
         valid_df["caption"].values,
         tokenizer=tokenizer,
@@ -122,7 +124,7 @@ def main(**args):
         find_matches(eval_model, 
                     image_embeddings,
                     query=query_list[i],
-                    image_path = args['image_path'],
+                    image_path = image_path,
                     image_filenames=valid_df['image'].values,
                     text_tokenizer=args['text_tokenizer'],
                     device=args['device'],
@@ -132,10 +134,10 @@ def main(**args):
 
 if __name__ == "__main__":
 
-    parser = argparse.ArgumentParser(description="Train the CLIP")
+    parser = argparse.ArgumentParser(description="Train the VQE")
     parser.add_argument("--debug", action='store_true', default=False,
                         help="Enable debug mode")
-    parser.add_argument("--image_path", type=str, default="./flickr30k_images/flickr30k_images",
+    parser.add_argument("--data_path", type=str, default="./flickr30k_images",
                         help="Path to the image directory")
     parser.add_argument("--captions_path", type=str, default=".",
                         help="Path to the captions directory")
@@ -201,7 +203,7 @@ if __name__ == "__main__":
                         help='path of outputs files')
     parser.add_argument('--time_stamp', action='store_false', default=True,\
                         help='don\'t append date timestamp to folder' )
-    print("\n### Training CLIP model ###")
+    print("\n### Training VQE model ###")
     print("> Parameters:")
     argspar = parser.parse_args()    
     for p, v in zip(argspar.__dict__.keys(), argspar.__dict__.values()):

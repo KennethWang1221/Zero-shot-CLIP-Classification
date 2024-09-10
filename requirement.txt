@@ -1,7 +1,9 @@
 timm
-itertools
+albumentations
+pandas
 transformers
 torch
 torchvision
 opencv-python
+matplotlib
 tqdm

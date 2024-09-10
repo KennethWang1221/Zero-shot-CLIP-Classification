@@ -11,6 +11,16 @@ CLIP, developed by OpenAI in 2021, is a sophisticated vision-and-language model 
 
 To set up the environment, clone the repository and install the necessary packages:
 
+
+```bash
+conda create --name clip_training_env
+
+pip3 install ipykernel
+
+python3 -m ipykernel install --user --name clip_training_env --display-name clip_training_env
+
+```
+
 ```bash
 pip3 install -r requirements.txt
 ```
@@ -20,14 +30,7 @@ pip3 install -r requirements.txt
 This repository uses the Flickr30k dataset for training the model. To download the dataset, execute the following commands:
 
 ```bash
-!wget "https://github.com/awsaf49/flickr-dataset/releases/download/v1.0/flickr30k_part00"
-!wget "https://github.com/awsaf49/flickr-dataset/releases/download/v1.0/flickr30k_part01"
-!wget "https://github.com/awsaf49/flickr-dataset/releases/download/v1.0/flickr30k_part02"
-!cat flickr30k_part00 flickr30k_part01 flickr30k_part02 > flickr30k.zip
-!rm flickr30k_part00 flickr30k_part01 flickr30k_part02
-!unzip -q flickr30k.zip -d ./flickr30k
-!rm flickr30k.zip
-!echo "Flickr30k dataset downloaded successfully."
+./download_flickr_dataset.sh
 ```
 
 ## Usage

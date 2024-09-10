@@ -36,8 +36,8 @@ def main(**args):
     if not os.path.exists(res_dir):
         os.makedirs(res_dir)
     
-    results_csv_path = os.path.join(args['data_path'], "results.csv")
-    image_path = os.path.join(args['data_path'], "flickr30k_images")
+    results_csv_path = os.path.join(args['data_path'], "captions.txt")
+    image_path = os.path.join(args['data_path'], "Images")
     print('results_csv_path:',results_csv_path)
     generate_captions(results_csv_path, save_path = "captions.csv")
 
@@ -137,7 +137,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Train the VQE")
     parser.add_argument("--debug", action='store_true', default=False,
                         help="Enable debug mode")
-    parser.add_argument("--data_path", type=str, default="./flickr30k_images",
+    parser.add_argument("--data_path", type=str, default="./flickr30k",
                         help="Path to the image directory")
     parser.add_argument("--captions_path", type=str, default=".",
                         help="Path to the captions directory")

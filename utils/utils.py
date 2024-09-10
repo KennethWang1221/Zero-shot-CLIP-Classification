@@ -37,11 +37,11 @@ def get_lr(optimizer):
         return param_group["lr"]
     
 def generate_captions(csv_file, save_path):
-    df = pd.read_csv(csv_file, delimiter="|")
-    df.columns = ['image', 'caption_number', 'caption']
+    df = pd.read_csv(csv_file, delimiter=",")
+    df.columns = ['image', 'caption']
     df['caption'] = df['caption'].str.lstrip()
-    df['caption_number'] = df['caption_number'].str.lstrip()
-    df.loc[19999, 'caption_number'] = "4"
+    # df.loc[19999, 'caption'] was intended to correct a specific caption at index 19999.
+    # If the dataset is correct, this line can be omitted.
     df.loc[19999, 'caption'] = "A dog runs across the grass ."
     ids = [id_ for id_ in range(len(df) // 5) for _ in range(5)]
     df['id'] = ids

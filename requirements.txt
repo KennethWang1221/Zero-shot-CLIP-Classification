@@ -1,8 +1,8 @@
+torch==2.4.1
 timm
 albumentations
 pandas
 transformers
-torch
 torchvision
 opencv-python
 matplotlib

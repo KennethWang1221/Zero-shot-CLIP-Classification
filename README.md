@@ -19,10 +19,8 @@ pip3 install ipykernel
 
 python3 -m ipykernel install --user --name clip_training_env --display-name clip_training_env
 
-```
-
-```bash
 pip3 install -r requirements.txt
+
 ```
 
 ## Data

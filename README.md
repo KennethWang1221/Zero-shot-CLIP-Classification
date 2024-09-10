@@ -51,8 +51,8 @@ The script will save the trained model weights and visualize image-text pairs.
 
 The CLIP model architecture includes:
 
-- Image Encoder (default: ResNet50)
-- Text Encoder (default: DistilBERT)
+- Image Encoder 
+- Text Encoder 
 - Projection heads for both image and text embeddings
 
 ## Training

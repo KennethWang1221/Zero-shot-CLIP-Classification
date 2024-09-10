@@ -15,6 +15,8 @@ To set up the environment, clone the repository and install the necessary packag
 ```bash
 conda create --name clip_training_env
 
+conda activate clip_training_env
+
 pip3 install ipykernel
 
 python3 -m ipykernel install --user --name clip_training_env --display-name clip_training_env
